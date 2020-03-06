@@ -1,8 +1,10 @@
 import React from 'react';
 
 function Footer() {
+    const styles = { padding: '30px' };
+
     return (
-        <footer>
+        <footer style={styles}>
             This is my footer element
         </footer >
     );

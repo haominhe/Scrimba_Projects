@@ -7,9 +7,11 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Navbar />
-      <MainContent />
-      <Footer />
+        <Navbar />
+        <MainContent />
+        {/* Have the <App /> component render 3 or 4 checkboxes with paragraphs or spans next to it
+            like you're making a todo list with some hard-coded items on it */}
+        <Footer />
       </div>
     );
   }
