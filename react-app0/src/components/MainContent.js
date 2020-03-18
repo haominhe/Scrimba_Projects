@@ -1,42 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TodoItem from './TodoItem';
 import Joke from './Joke';
-// import jokesData from './jokesData';
 import Product from './Product';
 import vschoolProducts from './vschoolProducts';
 import todosData from './todosData';
 import todosDataJoke from './todosDataJoke';
 
-function MainContent() {
-    // const jokeComponents = jokesData.map(joke => {
-    //     return <Joke key={joke.id} question={joke.question} punchLine={joke.punchLine} />
-    // })
+class MainContent extends Component {
+    constructor() {
+        super();
+        this.state = {
+            products: vschoolProducts,
+            todos: todosData,
+            todoJokes: todosDataJoke
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-    const productComponents = vschoolProducts.map(item => {
-        return <Product key={item.id} product={item} />
-    })
+    handleChange(id) {
+        this.setState(prevState => {
+            const updatedTodos = prevState.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.completed = todo.completed ? false : true;
+                }
+                return todo;
+            })
 
-    const todoComponents = todosData.map(item => {
-        const found = todosDataJoke.find(element => element.id === item.id);
+            return {
+                todos: updatedTodos
+            }
+        })
+    }
+
+    render() {
+        const productComponents = this.state.products.map(item => {
+            return <Product key={item.id} product={item} />
+        })
+
+        const todoComponents = this.state.todos.map(item => {
+            const found = this.state.todoJokes.find(element => element.id === item.id);
+            return (
+                <div key={item.id}>
+                    <TodoItem person={item} handleChange={this.handleChange} />
+                    <Joke question={found.question} punchLine={found.punchLine} />
+                </div>
+            )
+        })
+
         return (
-            <div key={item.id}>
-                <TodoItem  person={item} />
-                <Joke question={found.question} punchLine={found.punchLine} />
+            <div className='todo-list'>
+
+                {productComponents}
+
+                {todoComponents}
+
             </div>
-        )
-    })
-
-    return (
-        <div className='todo-list'>
-            {/* <main>This is my MainContent element</main> */}
-            {/* {jokeComponents} */}
-
-           
-            {productComponents}
-
-            {todoComponents}
-
-        </div>
-    );
+        );
+    }
 }
 export default MainContent;
