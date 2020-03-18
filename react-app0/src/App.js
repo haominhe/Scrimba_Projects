@@ -7,23 +7,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true
-    }
-  }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
-      })
-    }, 1000)
+    }
   }
 
   render() {
     return (
       <div>
         <Navbar />
-        {this.state.isLoading ? <h1>Loading...</h1> : <MainContent />}
+        <MainContent />
         <Footer />
       </div>
     );

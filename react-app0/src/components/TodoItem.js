@@ -18,8 +18,8 @@ class TodoItem extends Component {
                     id={this.props.person.name}
                     name={this.props.person.name}
                     checked={this.props.person.completed}
-
                     onChange={() => this.props.handleChange(this.props.person.id)} />
+                    
                 <label htmlFor={this.props.person.name}
                     style={this.props.person.completed ? styles : null}>
                     {this.props.person.name}</label>

@@ -12,7 +12,9 @@ class MainContent extends Component {
         this.state = {
             products: vschoolProducts,
             todos: todosData,
-            todoJokes: todosDataJoke
+            todoJokes: todosDataJoke,
+            swPerson: {},
+            isLoading: false
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -25,11 +27,24 @@ class MainContent extends Component {
                 }
                 return todo;
             })
-
             return {
                 todos: updatedTodos
             }
         })
+    }
+
+    componentDidMount() {
+        this.setState({ isLoading: true })
+        fetch('https://swapi.co/api/people/1')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    swPerson: data,
+                    isLoading: false
+                })
+            })
+
+
     }
 
     render() {
@@ -49,6 +64,8 @@ class MainContent extends Component {
 
         return (
             <div className='todo-list'>
+
+                {this.state.isLoading ? <h2>Loading...</h2> : <p>Star War: {this.state.swPerson.name}</p>}
 
                 {productComponents}
 
