@@ -34,7 +34,7 @@ class MainContent extends Component {
     }
 
     componentDidMount() {
-        this.setState({ isLoading: true })
+        this.setState({ isLoading: true });
         fetch('https://swapi.co/api/people/1')
             .then(response => response.json())
             .then(data => {
