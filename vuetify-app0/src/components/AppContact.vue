@@ -47,7 +47,7 @@ export default {
     ],
     select: null,
     items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    checkbox: false, 
+    checkbox: false,
     alert: false
   }),
 
@@ -59,11 +59,11 @@ export default {
       this.$refs.form.reset();
     },
     submit() {
-      if (!this.name && !this.email) {
-        console.log("hi");
+      if (this.name && this.email) {
+        this.alert = false;
+      } else {
         this.alert = true;
       }
-      this.$refs.form.resetValidation();
     }
   }
 };

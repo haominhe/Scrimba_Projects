@@ -1,13 +1,16 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="400">
+    <v-card class="mx-auto" :elevation='24' max-width="400">
       <v-img
         class="white--text align-end"
         height="200px"
         src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
       >
-        <v-card-title>Top 10 Australian beaches</v-card-title>
+        <v-card-title primary-title>Top 10 Australian beaches</v-card-title>
       </v-img>
+      <v-avatar size="80">
+        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+      </v-avatar>
 
       <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
 

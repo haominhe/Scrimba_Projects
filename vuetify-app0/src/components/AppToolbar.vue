@@ -1,6 +1,6 @@
 <template>
   <v-card color="grey lighten-4" flat height="100px" tile>
-    <v-toolbar dense color="blue lighten-4">
+    <v-toolbar dense color="blue lighten-4" height="80px">
       <v-app-bar-nav-icon color="indigo" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link class="routerLink" to="/">
@@ -9,14 +9,25 @@
 
       <v-spacer></v-spacer>
 
+
+
+
+      <v-badge left >
+        <span slot="badge" style="color:indigo">6</span>
+        <v-icon color="grey lighten-1" large>mdi-account-circle</v-icon>
+      </v-badge>
+
+
+
+
       <v-btn class="ma-2" outlined color="indigo">
         <v-icon>mdi-magnify</v-icon>About
       </v-btn>
 
       <router-link class="routerLink" to="/projects">
-      <v-btn class="ma-2" outlined color="indigo">
-        <v-icon>mdi-heart</v-icon>Projects
-      </v-btn>
+        <v-btn class="ma-2" outlined color="indigo">
+          <v-icon>mdi-heart</v-icon>Projects
+        </v-btn>
       </router-link>
 
       <router-link class="routerLink" to="/contact">
@@ -65,6 +76,7 @@ export default {
   data() {
     return {
       drawer: null,
+
       items: [
         { title: "Home", icon: "mdi-view-dashboard" },
         { title: "About", icon: "mdi-comment-multiple-outline" }
@@ -82,3 +94,7 @@ export default {
   text-decoration: none;
 }
 </style>
+
+
+
+
